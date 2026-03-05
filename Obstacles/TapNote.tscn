@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://csnmj1bn661lb"]
+
+[ext_resource type="Script" uid="uid://cey7s1efilkwh" path="res://Obstacles/tap_note.gd" id="1_p570x"]
+[ext_resource type="Texture2D" uid="uid://cdcg26sqd6uyc" path="res://Assets/passnote.png" id="2_u2wpn"]
+[ext_resource type="AudioStream" uid="uid://oxx0ld6ttwag" path="res://Assets/snare.mp3" id="3_p570x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqhm1"]
+radius = 144.155
+
+[node name="TapNote" type="Area2D"]
+script = ExtResource("1_p570x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.5625, 2.68751)
+scale = Vector2(-0.032, -0.034)
+texture = ExtResource("2_u2wpn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.23, 0.215)
+shape = SubResource("CircleShape2D_aqhm1")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p570x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

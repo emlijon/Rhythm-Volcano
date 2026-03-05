@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://biyh4g763135y"]
+
+[ext_resource type="Script" uid="uid://46exwemfddsg" path="res://Scenes/map_scene.gd" id="1_sgs5p"]
+[ext_resource type="Texture2D" uid="uid://dpro4swiexyus" path="res://Assets/barrier.png" id="2_hc1v5"]
+[ext_resource type="Texture2D" uid="uid://qw06px5rukhy" path="res://Assets/background.png" id="3_g7tjc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sgs5p")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2388.0
+offset_bottom = 1668.0
+texture = ExtResource("3_g7tjc")
+
+[node name="UnityLevel1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 454.0
+offset_right = 2573.0
+offset_bottom = 2502.0
+scale = Vector2(0.425196, 0.389881)
+texture_normal = ExtResource("2_hc1v5")
+
+[node name="TextEdit" type="TextEdit" parent="UnityLevel1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.832
+offset_top = -100.642
+offset_right = 86.9377
+offset_bottom = -0.642212
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1 Unity
+"
+
+[connection signal="pressed" from="UnityLevel1" to="." method="_on_unity_level_1_pressed"]

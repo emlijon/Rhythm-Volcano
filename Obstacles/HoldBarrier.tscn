@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://tv2dqa7p0mx3"]
+
+[ext_resource type="Script" uid="uid://dl2giv8cye1m3" path="res://Obstacles/hold_barrier.gd" id="1_lipwl"]
+[ext_resource type="Texture2D" uid="uid://dpro4swiexyus" path="res://Assets/barrier.png" id="1_yrgt7"]
+[ext_resource type="AudioStream" uid="uid://c57er86n7bt55" path="res://Assets/kick.mp3" id="3_x5lbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqhm1"]
+size = Vector2(162.2, 55.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5lbf"]
+size = Vector2(775, 24)
+
+[node name="HoldBarrier" type="StaticBody2D"]
+scale = Vector2(0.392451, 0.447229)
+script = ExtResource("1_lipwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.397949, 0.397949)
+texture = ExtResource("1_yrgt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 3)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_aqhm1")
+
+[node name="HoldTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoldTrigger"]
+position = Vector2(-9, -135)
+shape = SubResource("RectangleShape2D_x5lbf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_x5lbf")
+volume_db = 24.0
+pitch_scale = 2.0
+
+[connection signal="body_entered" from="HoldTrigger" to="." method="_on_hold_trigger_body_entered"]
+[connection signal="body_exited" from="HoldTrigger" to="." method="_on_hold_trigger_body_exited"]

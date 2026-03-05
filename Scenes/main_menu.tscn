@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgqf22l4b5ng8"]
+
+[ext_resource type="Texture2D" uid="uid://qw06px5rukhy" path="res://Assets/background.png" id="2_1ehe0"]
+
+[sub_resource type="GDScript" id="GDScript_28flt"]
+script/source = "extends Control
+
+func _on_start_button_pressed() -> void:
+	# This instantly destroys the Main Menu and loads the Map Screen!
+	get_tree().change_scene_to_file(\"res://Scenes/MapScreen.tscn\")
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_28flt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ehe0")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -69.0
+offset_right = -116.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+text = "START GAME"
+icon_alignment = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
